@@ -39,7 +39,12 @@ function timeAgo(published: string): string {
 }
 
 export function NewsCard({ article, summary }: Props) {
-  const cfg = sentimentConfig[summary.sentiment];
+  let sentimentStr = summary.sentiment || "Neutral";
+  if (sentimentStr.includes("Bull") || sentimentStr.includes("Positive")) sentimentStr = "Bullish";
+  else if (sentimentStr.includes("Bear") || sentimentStr.includes("Negative")) sentimentStr = "Bearish";
+  else sentimentStr = "Neutral";
+
+  const cfg = sentimentConfig[sentimentStr as keyof typeof sentimentConfig] || sentimentConfig["Neutral"];
   const Icon = cfg.icon;
 
   return (
@@ -75,7 +80,7 @@ export function NewsCard({ article, summary }: Props) {
                 className={`text-xs px-2 py-0 h-5 ${cfg.color}`}
               >
                 <Icon className="h-3 w-3 mr-1" />
-                {summary.sentiment}
+                {sentimentStr}
               </Badge>
               <span className="text-xs text-muted-foreground">
                 {article.source} · {timeAgo(article.time_published)}
