@@ -27,6 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://query1.finance.yahoo.com" />
+      </head>
       <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"

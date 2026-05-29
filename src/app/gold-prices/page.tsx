@@ -2,6 +2,7 @@
 export const revalidate = 3600;
 
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getLiveGoldPrice, getLiveSilverPrice, getGoldHistory30Days, getSilverHistory30Days, getOfficialIndiaRate, toINR10g } from "@/lib/gold-api";
 import { getNiftyQuote, getBankNiftyQuote, getEquityQuotes, getMarketNews } from "@/lib/alpha-vantage";
@@ -10,6 +11,31 @@ import { NewsCard } from "@/components/cards/news-card";
 import { GoldPriceChart } from "@/components/charts/gold-price-chart";
 import { SilverPriceChart } from "@/components/charts/silver-price-chart";
 import { GoldCalculator } from "@/components/calculator/gold-calculator";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const gold = await getLiveGoldPrice().catch(() => null);
+  const price = gold ? `₹${gold.price_gram_24k.toLocaleString("en-IN")}/g` : "Live Price";
+  
+  return {
+    title: `Gold Price Today: ${price} | Live 24K Rate`,
+    description: `Real-time 24K and 22K gold rate in India today. Current spot price is ${price}. MCX tracking and historical charts.`,
+    alternates: {
+      canonical: "https://dalalstreett-77pt.vercel.app/gold-prices",
+    },
+    openGraph: {
+      title: `Gold Price Today: ${price} | Live 24K Rate`,
+      description: `Track live gold rates in India. Today's 24K gold price is ${price}.`,
+      url: "https://dalalstreett-77pt.vercel.app/gold-prices",
+      siteName: "Dalal Streett",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Gold Price Today: ${price} | Live 24K Rate`,
+      description: `Track live gold rates in India. Today's 24K gold price is ${price}.`,
+    },
+  };
+}
 
 const WATCHLIST = ["RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "INFY.NS"];
 
@@ -59,6 +85,21 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            name: "Gold 24K",
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "INR",
+              price: gold.price_gram_24k,
+            },
+          }),
+        }}
+      />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
         

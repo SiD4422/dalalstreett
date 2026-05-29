@@ -83,6 +83,15 @@ export default async function NewsPortalPage() {
               ))}
             </div>
 
+            {/* SEO Internal Link Banner */}
+            <Link href="/gold-prices" className="mt-8 block w-full bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 text-center hover:bg-yellow-500/20 transition-colors group cursor-pointer">
+              <span className="text-yellow-600 dark:text-yellow-500 font-bold flex items-center justify-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                Check Live 24K Gold & Silver Rates in India Today
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
+
             {/* Latest News List */}
             <div className="pt-6">
               <h2 className="text-2xl font-black mb-6 border-b pb-2 text-gray-900 dark:text-white">Latest News</h2>
