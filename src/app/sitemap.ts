@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getLiveGoldPrice } from '@/lib/gold-api';
+import cities from '@/data/cities.json';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dalalstreett-77pt.vercel.app';
@@ -62,6 +63,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified,
       changeFrequency: 'always',
       priority: 0.9,
-    }
+    },
+    ...cities.map((c) => ({
+      url: `${baseUrl}/local/${c.city}`,
+      lastModified,
+      changeFrequency: 'always' as const,
+      priority: 0.8,
+    }))
   ];
 }
