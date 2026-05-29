@@ -32,8 +32,7 @@ export async function getMarketNews(topics = "finance,commodity,crypto,earnings,
         title: item.title,
         url: item.url,
         summary: item.summary,
-        // Fallback to picsum if Alpha Vantage omits banner_image
-        banner_image: item.banner_image || `https://picsum.photos/seed/${index + item.title.length}/800/420`,
+        banner_image: (item.banner_image && item.banner_image.toLowerCase() !== 'null') ? item.banner_image : `https://picsum.photos/seed/${index + item.title.length}/800/420`,
         source: item.source,
         time_published: item.time_published,
         overall_sentiment_label: item.overall_sentiment_label

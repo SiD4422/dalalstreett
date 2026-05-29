@@ -64,7 +64,7 @@ export function NewsSlider({ articles }: { articles: NewsArticle[] }) {
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-500" />
                   <span>
                     {article.time_published 
-                      ? new Date(article.time_published).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                      ? new Date(article.time_published.replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})$/, "$1-$2-$3T$4:$5:$6")).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
                       : new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                   </span>
                 </div>
