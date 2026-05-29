@@ -72,7 +72,7 @@ export default async function AllNewsPage() {
                 <div className="flex items-center justify-between text-xs text-muted-foreground font-medium pt-4 border-t border-black/5 dark:border-white/5">
                   <span className="flex items-center gap-1">
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    {new Date(article.time_published || Date.now()).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
+                    {new Date((article.time_published || "").replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})$/, "$1-$2-$3T$4:$5:$6") || Date.now()).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
                   </span>
                   <span className="flex items-center gap-1 hover:text-blue-600 transition-colors">
                     <MessageSquare className="w-3.5 h-3.5" />
