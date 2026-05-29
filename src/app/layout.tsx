@@ -60,8 +60,10 @@ export default function RootLayout({
                   <a href="/local/pune" className="hover:text-yellow-500 transition-colors">Pune</a>
                   <a href="/local/ahmedabad" className="hover:text-yellow-500 transition-colors">Ahmedabad</a>
                 </div>
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center mt-4 gap-4">
                   <a href="/about" className="text-xs text-blue-500 hover:text-blue-400 font-medium transition-colors">About Us & Methodology</a>
+                  <a href="/privacy" className="text-xs text-blue-500 hover:text-blue-400 font-medium transition-colors">Privacy Policy</a>
+                  <a href="/disclaimer" className="text-xs text-blue-500 hover:text-blue-400 font-medium transition-colors">Disclaimer</a>
                 </div>
                 <p className="mt-8 text-xs text-muted-foreground opacity-60">© {new Date().getFullYear()} Dalal Streett. All rights reserved.</p>
               </div>
