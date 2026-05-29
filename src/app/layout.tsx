@@ -7,16 +7,20 @@ import { Navbar } from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Dalal Streett India",
-    default: "Live Gold & Silver Prices India | Dalal Streett",
-  },
-  description:
-    "Real-time gold rate, silver price, Nifty 50 updates and AI-summarized market news for India.",
-  metadataBase: new URL("https://dalalstreett.in"),
-  openGraph: { type: "website", locale: "en_IN" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+  const currentYear = new Date().getFullYear();
+  
+  return {
+    title: {
+      template: "%s | Dalal Streett India",
+      default: `Live Gold & Silver Prices India Today (${currentMonth} ${currentYear}) | AI Market News | Dalal Streett`,
+    },
+    description: "Real-time gold rate, silver price, Nifty 50 updates and AI-summarized market news for India.",
+    metadataBase: new URL("https://dalalstreett-77pt.vercel.app"),
+    openGraph: { type: "website", locale: "en_IN" },
+  };
+}
 
 import { GlobalTicker } from "@/components/global-ticker";
 
@@ -55,6 +59,9 @@ export default function RootLayout({
                   <a href="/local/kolkata" className="hover:text-yellow-500 transition-colors">Kolkata</a>
                   <a href="/local/pune" className="hover:text-yellow-500 transition-colors">Pune</a>
                   <a href="/local/ahmedabad" className="hover:text-yellow-500 transition-colors">Ahmedabad</a>
+                </div>
+                <div className="flex justify-center mt-4">
+                  <a href="/about" className="text-xs text-blue-500 hover:text-blue-400 font-medium transition-colors">About Us & Methodology</a>
                 </div>
                 <p className="mt-8 text-xs text-muted-foreground opacity-60">© {new Date().getFullYear()} Dalal Streett. All rights reserved.</p>
               </div>

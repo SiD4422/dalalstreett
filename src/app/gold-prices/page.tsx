@@ -89,15 +89,28 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org/",
+            "@context": "https://schema.org",
             "@type": "Product",
             name: "Gold 24K",
             offers: {
               "@type": "Offer",
               priceCurrency: "INR",
-              price: gold.price_gram_24k,
-            },
-          }),
+              price: gold.price_gram_24k.toString()
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dalalstreett-77pt.vercel.app/" },
+              { "@type": "ListItem", "position": 2, "name": "Gold Prices", "item": "https://dalalstreett-77pt.vercel.app/gold-prices" }
+            ]
+          })
         }}
       />
       

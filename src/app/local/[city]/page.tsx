@@ -82,6 +82,20 @@ export default async function CityGoldPage({
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dalalstreett-77pt.vercel.app/" },
+              { "@type": "ListItem", "position": 2, "name": "Gold Prices", "item": "https://dalalstreett-77pt.vercel.app/gold-prices" },
+              { "@type": "ListItem", "position": 3, "name": entry.label, "item": `https://dalalstreett-77pt.vercel.app/local/${entry.city}` }
+            ]
+          })
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Gold Rates", href: "/gold-prices" }, { label: entry.label }]} />
 

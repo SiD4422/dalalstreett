@@ -62,7 +62,7 @@ export function NewsCard({ article, summary }: Props) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={article.banner_image}
-                alt=""
+                alt={`AI summarized article: ${article.title}`}
                 className="h-full w-full object-cover"
                 loading="lazy"
               />

@@ -47,7 +47,7 @@ export function NewsSlider({ articles }: { articles: NewsArticle[] }) {
               {/* Fallback deterministic image from picsum */}
               <img 
                 src={article.banner_image || `https://picsum.photos/seed/${index + article.title.length}/800/420`}
-                alt={article.title}
+                alt={`Breaking AI market news: ${article.title}`}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 fetchPriority={index === 0 ? "high" : "auto"}
                 loading={index === 0 ? "eager" : "lazy"}

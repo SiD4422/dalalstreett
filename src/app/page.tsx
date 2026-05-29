@@ -37,7 +37,27 @@ export default async function NewsPortalPage() {
 
   return (
     <div className="bg-[#f8f9fa] dark:bg-[#0a0a0a] min-h-screen pt-6 pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Dalal Streett AI Market News",
+            applicationCategory: "FinanceApplication",
+            operatingSystem: "Web",
+            description: "Real-time gold rate, silver price, and AI-summarized market news for India.",
+            offers: {
+              "@type": "Offer",
+              price: "0"
+            }
+          })
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <h1 className="text-3xl md:text-4xl font-black tracking-tight text-gray-900 dark:text-white">Dalal Streett: India's Live Market Ticker & AI News</h1>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* ── LEFT COLUMN (Main Content) - 8 cols ── */}
@@ -61,7 +81,7 @@ export default async function NewsPortalPage() {
                     </span>
                     <img 
                       src={article.banner_image || `https://picsum.photos/seed/${i + article.title.length}/600/400`}
-                      alt={article.title}
+                      alt={`Live market news: ${article.title}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -105,7 +125,7 @@ export default async function NewsPortalPage() {
                       <div className="sm:w-1/3 relative h-[180px] sm:h-auto overflow-hidden rounded-sm flex-shrink-0">
                         <img 
                           src={article.banner_image || `https://picsum.photos/seed/latest${i + article.title.length}/400/300`}
-                          alt={article.title}
+                          alt={`Latest financial news: ${article.title}`}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
@@ -151,7 +171,7 @@ export default async function NewsPortalPage() {
                     <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-sm">
                       <img 
                         src={article.banner_image || `https://picsum.photos/seed/pop${i}/200/200`}
-                        alt={article.title}
+                        alt={`Popular market news: ${article.title}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         loading="lazy"
                       />
@@ -179,7 +199,7 @@ export default async function NewsPortalPage() {
             {/* Simulated ZEMEZ Tall Sidebar Banners */}
             <div className="space-y-6">
               <div className="relative w-full h-[400px] bg-slate-900 overflow-hidden group cursor-pointer">
-                <img src="https://picsum.photos/seed/banner1/400/800" alt="Banner" className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
+                <img src="https://picsum.photos/seed/banner1/400/800" alt="Global Markets Rebound Analysis" className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 flex flex-col p-6 pointer-events-none">
                   <span className="bg-white text-black text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 w-fit mb-auto">Economy</span>
                   <div className="mt-auto">
@@ -190,7 +210,7 @@ export default async function NewsPortalPage() {
               </div>
 
               <div className="relative w-full h-[300px] bg-slate-900 overflow-hidden group cursor-pointer">
-                <img src="https://picsum.photos/seed/banner2/400/600" alt="Banner" className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
+                <img src="https://picsum.photos/seed/banner2/400/600" alt="Bitcoin Surges Crypto Analysis" className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 flex flex-col p-6 pointer-events-none">
                   <span className="bg-white text-black text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 w-fit mb-auto">Crypto</span>
                   <div className="mt-auto">
